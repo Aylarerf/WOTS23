@@ -16,14 +16,10 @@ typedef struct {
 
 
 
-/* Given a params struct where the following properties have been initialized;
-    - full_height; the height of the complete (hyper)tree
+/* Given a params struct where the following properties have been initialized
     - n; the number of bytes of hash function output
-    - d; the number of layers (d > 1 implies XMSSMT)
-    - func; one of {XMSS_SHA2, XMSS_SHAKE128, XMSS_SHAKE256}
     - wots_w; the Winternitz parameter
-    - optionally, bds_k; the BDS traversal trade-off parameter,
-    this function initializes the remainder of the params structure. */
+    
 int wots_initialize_params(wots_params *params);
 
 #endif
