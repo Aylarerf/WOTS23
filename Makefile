@@ -9,28 +9,9 @@ SOURCES_FAST = $(subst xmss_core.c,xmss_core_fast.c,$(SOURCES))
 HEADERS_FAST = $(subst xmss_core.c,xmss_core_fast.c,$(HEADERS))
 
 TESTS = test/wots \
-		test/oid \
-		test/speed \
-		test/xmss_determinism \
-		test/xmss \
-		test/xmss_fast \
-		test/xmssmt \
-		test/xmssmt_fast \
-		test/maxsigsxmss \
-		test/maxsigsxmssmt \
+		test/wots \
+		
 
-UI = ui/xmss_keypair \
-	 ui/xmss_sign \
-	 ui/xmss_open \
-	 ui/xmssmt_keypair \
-	 ui/xmssmt_sign \
-	 ui/xmssmt_open \
-	 ui/xmss_keypair_fast \
-	 ui/xmss_sign_fast \
-	 ui/xmss_open_fast \
-	 ui/xmssmt_keypair_fast \
-	 ui/xmssmt_sign_fast \
-	 ui/xmssmt_open_fast \
 
 all: tests ui
 
@@ -44,44 +25,6 @@ test: $(TESTS:=.exec)
 test/%.exec: test/%
 	@$<
 
-test/xmss_fast: test/xmss.c $(SOURCES_FAST) $(OBJS) $(HEADERS_FAST)
-	$(CC) -DXMSS_SIGNATURES=1024 $(CFLAGS) -o $@ $(SOURCES_FAST) $< $(LDLIBS)
-
-test/xmss: test/xmss.c $(SOURCES) $(OBJS) $(HEADERS)
-	$(CC) $(CFLAGS) -o $@ $(SOURCES) $< $(LDLIBS)
-
-test/xmssmt_fast: test/xmss.c $(SOURCES_FAST) $(OBJS) $(HEADERS_FAST)
-	$(CC) -DXMSSMT -DXMSS_SIGNATURES=1024 $(CFLAGS) -o $@ $(SOURCES_FAST) $< $(LDLIBS)
-
-test/xmssmt: test/xmss.c $(SOURCES) $(OBJS) $(HEADERS)
-	$(CC) -DXMSSMT $(CFLAGS) -o $@ $(SOURCES) $< $(LDLIBS)
-
-test/speed: test/speed.c $(SOURCES_FAST) $(OBJS) $(HEADERS_FAST)
-	$(CC) -DXMSSMT -DXMSS_VARIANT=\"XMSSMT-SHA2_20/2_256\" $(CFLAGS) -o $@ $(SOURCES_FAST) $< $(LDLIBS)
-
-test/vectors: test/vectors.c $(SOURCES) $(OBJS) $(HEADERS)
-	$(CC) -DXMSSMT $(CFLAGS) -o $@ $(SOURCES) $< $(LDLIBS)
-	
-test/maxsigsxmss: test/xmss_max_signatures.c $(SOURCES_FAST) $(OBJS) $(HEADERS_FAST)
-	$(CC) $(CFLAGS) -o $@ $(SOURCES_FAST) $< $(LDLIBS)
-
-test/maxsigsxmssmt: test/xmss_max_signatures.c $(SOURCES_FAST) $(OBJS) $(HEADERS_FAST)
-	$(CC) -DXMSSMT $(CFLAGS) -o $@ $(SOURCES_FAST) $< $(LDLIBS)
-	
-test/%: test/%.c $(SOURCES) $(OBJS) $(HEADERS)
-	$(CC) $(CFLAGS) -o $@ $(SOURCES) $< $(LDLIBS)
-
-ui/xmss_%_fast: ui/%.c $(SOURCES_FAST) $(OBJS) $(HEADERS_FAST)
-	$(CC) $(CFLAGS) -o $@ $(SOURCES_FAST) $< $(LDLIBS)
-
-ui/xmssmt_%_fast: ui/%.c $(SOURCES_FAST) $(OBJS) $(HEADERS_FAST)
-	$(CC) -DXMSSMT $(CFLAGS) -o $@ $(SOURCES_FAST) $< $(LDLIBS)
-
-ui/xmss_%: ui/%.c $(SOURCES) $(OBJS) $(HEADERS)
-	$(CC) $(CFLAGS) -o $@ $(SOURCES) $< $(LDLIBS)
-
-ui/xmssmt_%: ui/%.c $(SOURCES) $(OBJS) $(HEADERS)
-	$(CC) -DXMSSMT $(CFLAGS) -o $@ $(SOURCES) $< $(LDLIBS)
 
 clean:
 	-$(RM) $(TESTS)
