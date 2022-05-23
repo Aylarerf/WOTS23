@@ -16,7 +16,7 @@
  */
 int wots_initialize_params(wots_params *params)
 {
-    params->tree_height = params->full_height  / params->d;
+    
     if (params->wots_w == 4) {
         params->wots_log_w = 2;
         params->wots_len1 = 8 * params->n / params->wots_log_w;
@@ -42,12 +42,7 @@ int wots_initialize_params(wots_params *params)
     params->wots_sig_bytes = params->wots_len * params->n;
 
     
-    params->sig_bytes = (params->index_bytes + params->n
-                         + params->d * params->wots_sig_bytes
-                         + params->full_height * params->n);
-
-    params->pk_bytes = 2 * params->n;
-    params->sk_bytes = xmss_xmssmt_core_sk_bytes(params);
+  
 
     return 0;
 }
