@@ -11,7 +11,7 @@
  * Helper method for pseudorandom key generation.
  * Expands an n-byte array into a len*n byte array using the `prf_keygen` function.
  */
-static void expand_seed(const xmss_params *params,
+static void expand_seed(const wots_params *params,
                         unsigned char *outseeds, const unsigned char *inseed, 
                         const unsigned char *pub_seed, uint32_t addr[8])
 {
@@ -35,7 +35,7 @@ static void expand_seed(const xmss_params *params,
  * Interprets in as start-th value of the chain.
  * addr has to contain the address of the chain.
  */
-static void gen_chain(const xmss_params *params,
+static void gen_chain(const wots_params *params,
                       unsigned char *out, const unsigned char *in,
                       unsigned int start, unsigned int steps,
                       const unsigned char *pub_seed, uint32_t addr[8])
@@ -57,7 +57,7 @@ static void gen_chain(const xmss_params *params,
  * Interprets an array of bytes as integers in base w.
  * This only works when log_w is a divisor of 8.
  */
-static void base_w(const xmss_params *params,
+static void base_w(const wots_params *params,
                    int *output, const int out_len, const unsigned char *input)
 {
     int in = 0;
@@ -79,7 +79,7 @@ static void base_w(const xmss_params *params,
 }
 
 /* Computes the WOTS+ checksum over a message (in base_w). */
-static void wots_checksum(const xmss_params *params,
+static void wots_checksum(const wots_params *params,
                           int *csum_base_w, const int *msg_base_w)
 {
     int csum = 0;
@@ -99,7 +99,7 @@ static void wots_checksum(const xmss_params *params,
 }
 
 /* Takes a message and derives the matching chain lengths. */
-static void chain_lengths(const xmss_params *params,
+static void chain_lengths(const wots_params *params,
                           int *lengths, const unsigned char *msg)
 {
     base_w(params, lengths, params->wots_len1, msg);
@@ -114,7 +114,7 @@ static void chain_lengths(const xmss_params *params,
  *
  * Writes the computed public key to 'pk'.
  */
-void wots_pkgen(const xmss_params *params,
+void wots_pkgen(const wots_params *params,
                 unsigned char *pk, const unsigned char *seed,
                 const unsigned char *pub_seed, uint32_t addr[8])
 {
@@ -134,7 +134,7 @@ void wots_pkgen(const xmss_params *params,
  * Takes a n-byte message and the 32-byte seed for the private key to compute a
  * signature that is placed at 'sig'.
  */
-void wots_sign(const xmss_params *params,
+void wots_sign(const wots_params *params,
                unsigned char *sig, const unsigned char *msg,
                const unsigned char *seed, const unsigned char *pub_seed,
                uint32_t addr[8])
@@ -159,7 +159,7 @@ void wots_sign(const xmss_params *params,
  *
  * Writes the computed public key to 'pk'.
  */
-void wots_pk_from_sig(const xmss_params *params, unsigned char *pk,
+void wots_pk_from_sig(const wots_params *params, unsigned char *pk,
                       const unsigned char *sig, const unsigned char *msg,
                       const unsigned char *pub_seed, uint32_t addr[8])
 {
