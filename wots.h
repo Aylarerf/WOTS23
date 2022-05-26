@@ -12,7 +12,7 @@
  *
  * Writes the computed public key to 'pk'.
  */
-void wots_pkgen(const xmss_params *params,
+void wots_pkgen(const wots_params *params,
                 unsigned char *pk, const unsigned char *seed,
                 const unsigned char *pub_seed, uint32_t addr[8]);
 
@@ -20,7 +20,7 @@ void wots_pkgen(const xmss_params *params,
  * Takes a n-byte message and the 32-byte seed for the private key to compute a
  * signature that is placed at 'sig'.
  */
-void wots_sign(const xmss_params *params,
+void wots_sign(const wots_params *params,
                unsigned char *sig, const unsigned char *msg,
                const unsigned char *seed, const unsigned char *pub_seed,
                uint32_t addr[8]);
@@ -30,7 +30,7 @@ void wots_sign(const xmss_params *params,
  *
  * Writes the computed public key to 'pk'.
  */
-void wots_pk_from_sig(const xmss_params *params, unsigned char *pk,
+void wots_pk_from_sig(const wots_params *params, unsigned char *pk,
                       const unsigned char *sig, const unsigned char *msg,
                       const unsigned char *pub_seed, uint32_t addr[8]);
 
