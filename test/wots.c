@@ -9,7 +9,7 @@
 int main()
 {
     
-
+    wots_params params;
     unsigned char seed[params.n];
     unsigned char pub_seed[params.n];
     unsigned char pk1[params.wots_sig_bytes];
