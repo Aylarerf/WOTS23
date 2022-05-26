@@ -22,7 +22,7 @@ void addr_to_bytes(unsigned char *bytes, const uint32_t addr[8])
     }
 }
 
-static int core_hash(const xmss_params *params,
+static int core_hash(const wots_params *params,
                      unsigned char *out,
                      const unsigned char *in, unsigned long long inlen)
 {
@@ -59,7 +59,7 @@ static int core_hash(const xmss_params *params,
 /*
  * Computes PRF(key, in), for a key of params->n bytes, and a 32-byte input.
  */
-int prf(const xmss_params *params,
+int prf(const wots_params *params,
         unsigned char *out, const unsigned char in[32],
         const unsigned char *key)
 {
@@ -76,7 +76,7 @@ int prf(const xmss_params *params,
  * Computes PRF_keygen(key, in), for a key of params->n bytes, and an input
  * of 32 + params->n bytes
  */
-int prf_keygen(const xmss_params *params,
+int prf_keygen(const wots_params *params,
         unsigned char *out, const unsigned char *in,
         const unsigned char *key)
 {
@@ -96,7 +96,7 @@ int prf_keygen(const xmss_params *params,
  * to use for the prefix. This is necessary to prevent having to move the
  * message around (and thus allocate memory for it).
  */
-int hash_message(const xmss_params *params, unsigned char *out,
+int hash_message(const wots_params *params, unsigned char *out,
                  const unsigned char *R, const unsigned char *root,
                  unsigned long long idx,
                  unsigned char *m_with_prefix, unsigned long long mlen)
@@ -114,7 +114,7 @@ int hash_message(const xmss_params *params, unsigned char *out,
 /**
  * We assume the left half is in in[0]...in[n-1]
  */
-int thash_h(const xmss_params *params,
+int thash_h(const wots_params *params,
             unsigned char *out, const unsigned char *in,
             const unsigned char *pub_seed, uint32_t addr[8])
 {
@@ -146,7 +146,7 @@ int thash_h(const xmss_params *params,
     return core_hash(params, out, buf, params->padding_len + 3 * params->n);
 }
 
-int thash_f(const xmss_params *params,
+int thash_f(const wots_params *params,
             unsigned char *out, const unsigned char *in,
             const unsigned char *pub_seed, uint32_t addr[8])
 {
