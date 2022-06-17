@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <string.h>
-
+#include "../params.h"
 #include "../wots.h"
 #include "../randombytes.h"
-#include "../params.h"
+
 
 int main()
 {
