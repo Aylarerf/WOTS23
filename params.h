@@ -20,4 +20,4 @@ typedef struct {
     
 int wots_initialize_params(wots_params *params);
 
-#endif
+
