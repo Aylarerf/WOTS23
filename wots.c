@@ -5,7 +5,7 @@
 #include "hash.h"
 #include "wots.h"
 #include "hash_address.h"
-#include "params.h"
+
 
 /**
  * Helper method for pseudorandom key generation.
