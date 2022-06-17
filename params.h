@@ -16,9 +16,7 @@ typedef struct {
 
 
 
-/* Given a params struct where the following properties have been initialized
-    - n; the number of bytes of hash function output
-    - wots_w; the Winternitz parameter
+
     
 int wots_initialize_params(wots_params *params);
 
