@@ -7,7 +7,6 @@
 
 /**
  * Given a params struct where the following properties have been initialized;
- *  - full_height; the height of the complete (hyper)tree
  *  - n; the number of bytes of hash function output
  *  - func; one of {XMSS_SHA2, XMSS_SHAKE128, XMSS_SHAKE256}
  *  - wots_w; the Winternitz parameter
