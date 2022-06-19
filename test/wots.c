@@ -10,7 +10,6 @@ int main()
 {
     
     wots_params params;
-    uint32_t oid = 0x00000001;
     unsigned char seed[params.n];
     unsigned char pub_seed[params.n];
     unsigned char pk1[params.wots_sig_bytes];
