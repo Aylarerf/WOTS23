@@ -2,7 +2,7 @@
 #include <stdint.h>
 
 typedef struct {
-    unsigned int func;
+   
     unsigned int n;
     unsigned int padding_len;
     unsigned int wots_w;
@@ -11,7 +11,7 @@ typedef struct {
     unsigned int wots_len2;
     unsigned int wots_len;
     unsigned int wots_sig_bytes;
-    unsigned int index_bytes;
+    
 } wots_params;
 
 
