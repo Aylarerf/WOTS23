@@ -15,6 +15,8 @@ ui: $(UI)
 
 test: $(TESTS:=.exec)
 
+test/xmss_fast: test/xmss.c $(SOURCES_FAST) $(OBJS) $(HEADERS_FAST)
+
 .PHONY: clean test
 
 test/%.exec: test/%
