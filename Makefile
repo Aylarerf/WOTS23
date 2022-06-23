@@ -15,7 +15,8 @@ ui: $(UI)
 
 test: $(TESTS:=.exec)
 
-test/wots.c: test/wots.c $(SOURCES_FAST) $(OBJS) $(HEADERS_FAST)
+test/wots: test/wots.c $(SOURCES) $(OBJS) $(HEADERS)
+	$(CC) $(CFLAGS) -o $@ $(SOURCES) $< $(LDLIBS)
 
 .PHONY: clean test
 
