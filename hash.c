@@ -30,7 +30,7 @@ void set_hash_addr(word32 addr[8], word32 hash)
 #define XMSS_HASH_PADDING_PRF 3
 
 
-void addr_to_bytes(byte *bytes, const word32 addr[8])
+void addr_to_bytes(byte *bytes, const uint32-t addr[8])
 {
     int i;
     for (i = 0; i < 8; i++) {
@@ -55,7 +55,7 @@ int prf(byte *out, const byte in[32],
 
 
 int thash_f(byte *out, const byte *in,
-            const byte *pub_seed, word32 addr[8])
+            const byte *pub_seed, uint32-t addr[8])
 {
     byte buf[3 * PARAMSN];
     byte bitmask[PARAMSN];
