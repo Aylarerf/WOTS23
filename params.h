@@ -4,7 +4,6 @@
 typedef struct {
    
     unsigned int n;
-    unsigned int padding_len;
     unsigned int wots_w;
     unsigned int wots_log_w;
     unsigned int wots_len1;
