@@ -21,7 +21,7 @@ void set_chain_addr(uint32_t addr[8], uint32_t chain)
     addr[5] = chain;
 }
 
-void set_hash_addr(wuint32_t addr[8], uint32_t hash)
+void set_hash_addr(uint32_t addr[8], uint32_t hash)
 {
     addr[6] = hash;
 }
