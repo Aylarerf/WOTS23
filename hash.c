@@ -11,17 +11,17 @@
 
 
 
-void set_key_and_mask(word32 addr[8], word32 key_and_mask)
+void set_key_and_mask(uint32_t addr[8], uint32_t key_and_mask)
 {
     addr[7] = key_and_mask;
 }
 
-void set_chain_addr(word32 addr[8], word32 chain)
+void set_chain_addr(uint32_t addr[8], uint32_t chain)
 {
     addr[5] = chain;
 }
 
-void set_hash_addr(word32 addr[8], word32 hash)
+void set_hash_addr(wuint32_t addr[8], uint32_t hash)
 {
     addr[6] = hash;
 }
@@ -55,7 +55,7 @@ int prf(byte *out, const byte in[32],
 
 
 int thash_f(byte *out, const byte *in,
-            const byte *pub_seed, uint32-t addr[8])
+            const byte *pub_seed, uint32_t addr[8])
 {
     byte buf[3 * PARAMSN];
     byte bitmask[PARAMSN];
