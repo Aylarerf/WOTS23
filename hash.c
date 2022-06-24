@@ -30,7 +30,7 @@ void set_hash_addr(uint32_t addr[8], uint32_t hash)
 #define XMSS_HASH_PADDING_PRF 3
 
 
-void addr_to_bytes(byte *bytes, const uint32-t addr[8])
+void addr_to_bytes(unsigned char *bytes, const uint32_t addr[8])
 {
     int i;
     for (i = 0; i < 8; i++) {
