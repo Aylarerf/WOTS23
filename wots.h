@@ -2,6 +2,8 @@
 #define XMSS_WOTS_H
 
 #include <stdint.h>
+#include <stdint.h>
+#include "params.h"
 
 
 /**
